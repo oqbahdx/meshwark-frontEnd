@@ -1,0 +1,17 @@
+/* LoginForm.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-left {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-right .logo {
+    width: 50px;
+    height: auto;
+}

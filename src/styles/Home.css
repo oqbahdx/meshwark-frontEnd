@@ -1,0 +1,21 @@
+/* Home.css */
+.card-users {
+    background-color: #f8d7da; /* Light red */
+    border-color: #f5c6cb; /* Red border */
+  }
+  
+  .card-admins {
+    background-color: #d4edda; /* Light green */
+    border-color: #c3e6cb; /* Green border */
+  }
+  
+  .card-drivers {
+    background-color: #d1ecf1; /* Light blue */
+    border-color: #bee5eb; /* Blue border */
+  }
+  
+  .card-trips {
+    background-color: #fff3cd; /* Light yellow */
+    border-color: #ffeeba; /* Yellow border */
+  }
+  
