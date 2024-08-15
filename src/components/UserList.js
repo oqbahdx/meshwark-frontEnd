@@ -18,7 +18,6 @@ const UsersList = () => {
         setError('Error fetching users');
       }
     };
-
     fetchUsers();
   }, []);
 
@@ -27,11 +26,11 @@ const UsersList = () => {
   };
 
   return (
-    <Container style={{ direction: 'rtl' }} >
-      <h1 className="my-4">المستخدمين</h1>
+    <Container style={{ direction: 'rtl' }}>
+      <h1 className="my-4" style={{ color: '#4C6DAA' }}>المستخدمين</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       <Table striped bordered hover>
-        <thead>
+        <thead style={{ backgroundColor: '#4C6DAA', color: 'white' }}>
           <tr>
             <th>#</th>
             <th>الاسم</th>
@@ -42,12 +41,21 @@ const UsersList = () => {
         </thead>
         <tbody>
           {users.map((user, index) => (
-            <tr key={user.id} onClick={() => handleRowClick(user.id)} style={{ cursor: 'pointer' }}>
+            <tr 
+              key={user.id} 
+              onClick={() => handleRowClick(user.id)} 
+              style={{ 
+                cursor: 'pointer',
+                backgroundColor: index % 2 === 0 ? '#F8F9FA' : 'white'
+              }}
+            >
               <td>{index + 1}</td>
               <td>{user.firstName} {user.lastName}</td>
               <td>{user.email}</td>
               <td>{user.role}</td>
-              <td>{user.isActive ? 'مفعل':'غير مفعل'}</td>
+              <td style={{ color: user.isActive ? '#28a745' : '#dc3545' }}>
+                {user.isActive ? 'مفعل' : 'غير مفعل'}
+              </td>
             </tr>
           ))}
         </tbody>

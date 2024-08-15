@@ -1,0 +1,107 @@
+/* UserDetails.css */
+
+.container {
+    max-width: 1200px;
+}
+
+.text-primary {
+    color: #4C6DAA; /* Adjust to your primary color */
+}
+
+.text-muted {
+    color: #6c757d; /* Bootstrap's text-muted color */
+}
+
+.rounded-circle {
+    border: 3px solid #4C6DAA; /* Primary color border for profile picture */
+}
+
+.badge.bg-success {
+    background-color: #28a745; /* Green badge for online status */
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.profile-button {
+    background-color: #4C6DAA; /* Primary button color */
+    border: none;
+}
+
+.profile-button:hover {
+    background-color: #365f9f; /* Darker shade for hover effect */
+}
+
+img.rounded-circle {
+    border: 3px solid #4C6DAA; /* Add border to profile image */
+}
+
+.card-body h5 {
+    font-size: 1.5rem;
+    color: #4C6DAA; /* Primary color for name */
+}
+
+.card-body p {
+    font-size: 1rem;
+    color: #333; /* Default text color */
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #4C6DAA;
+    box-shadow: 0 0 0 0.2rem rgba(76, 109, 170, 0.25); /* Primary color shadow on focus */
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-select {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.form-select:focus {
+    border-color: #4C6DAA;
+    box-shadow: 0 0 0 0.2rem rgba(76, 109, 170, 0.25);
+}
+
+.card-body .labels {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 2rem !important;
+}
+
+.me-3 {
+    margin-right: 1rem !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.online-badge {
+    width: 12px;
+    height: 12px;
+    background-color: #28a745; /* Online status color */
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

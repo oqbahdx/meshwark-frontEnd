@@ -1,7 +1,7 @@
-// src/components/DriverList.js
+// src/components/AdminList.js
 import React, { useEffect, useState } from 'react';
 import { getAllAdmins } from '../services/apiService';
-import { Table, Container, Alert } from 'react-bootstrap';
+import { Table, Container, Alert, Badge } from 'react-bootstrap';
 
 const AdminList = () => {
   const [admins, setAdmins] = useState([]);
@@ -22,24 +22,28 @@ const AdminList = () => {
 
   return (
     <Container>
-      <h1 className="my-4">Admin List</h1>
+      <h1 className="my-4" style={{ color: '#4C6DAA' }}>قائمة المشرفين</h1>
       {error && <Alert variant="danger">{error}</Alert>}
-      <Table striped bordered hover>
-        <thead>
+      <Table responsive bordered hover>
+        <thead style={{ backgroundColor: '#4C6DAA', color: 'white' }}>
           <tr>
             <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Status</th>
+            <th>الاسم</th>
+            <th>البريد الإلكتروني</th>
+            <th>الحالة</th>
           </tr>
         </thead>
         <tbody>
           {admins.map((admin, index) => (
-            <tr key={admin.id}>
+            <tr key={admin.id} style={{ backgroundColor: index % 2 === 0 ? '#F8F9FA' : 'white' }}>
               <td>{index + 1}</td>
-              <td>{admin.firstName} {admin.lastName}  </td>
+              <td>{admin.firstName} {admin.lastName}</td>
               <td>{admin.email}</td>
-              <td>{admin.isActive ? 'Active' : 'Not Active'}</td>
+              <td>
+                <Badge bg={admin.isActive ? 'success' : 'danger'}>
+                  {admin.isActive ? 'مفعل' : 'غير مفعل'}
+                </Badge>
+              </td>
             </tr>
           ))}
         </tbody>

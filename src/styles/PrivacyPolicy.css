@@ -1,0 +1,38 @@
+/* PrivacyPolicy.css */
+
+/* Ensure the container uses RTL layout */
+.container {
+    color: #000000; /* Default text color */
+    background-color: #FFFFFF; /* Background color */
+    direction: rtl; /* Set text direction to RTL */
+    text-align: right; /* Align text to the right */
+    padding: 15px; /* Add some padding */
+}
+
+.policy-heading {
+    color: #4C6DAA; /* Secondary color for headings */
+    text-align: right; /* Align heading to the right */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.policy-subheading {
+    color: #4C6DAA; /* Secondary color for subheadings */
+    text-align: right; /* Align subheadings to the right */
+    margin-top: 20px; /* Space above subheadings */
+}
+
+.policy-text {
+    color: #000000; /* Default text color for paragraphs */
+    text-align: right; /* Align paragraphs to the right */
+    margin-bottom: 15px; /* Space below paragraphs */
+}
+
+.policy-list {
+    color: #000000; /* Default text color for list items */
+    text-align: right; /* Align list items to the right */
+    margin-bottom: 15px; /* Space below the list */
+}
+
+.policy-list li {
+    margin-bottom: 10px; /* Adjust spacing between list items */
+}

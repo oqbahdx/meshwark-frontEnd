@@ -1,41 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { loginUser } from '../services/apiService'; // Import the loginUser function
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/Intro.css'; // Ensure you include this import
-import QRCode from 'react-qr-code';
 import logo from '../images/logo.png';
+import '../styles/LoginForm.css'; // Import the updated CSS
 
-const Intro = () => (
-  <div id="page-top" style={{ direction: 'rtl' }}>
-    <header className="masthead">
-      <div className="container px-5">
-        <div className="row gx-5 align-items-center">
-          <div className="col-lg-6">
-            <div className="mb-5 mb-lg-0 text-center text-lg-end">
-              <h1 className="display-1 lh-1 mb-3">خدمتك في الوقت المناسب.</h1>
-              <p className="lead fw-normal text-muted mb-5">توصلك إلى وجهتك بسهولة وراحة، متاحة على مدار الساعة في متناول يدك.</p>
-              <div className="d-flex flex-column flex-lg-row align-items-center justify-content-lg-end">
-                <a className="ms-lg-3 mb-4 mb-lg-0" href="#!"><img className="app-badge" src="assets/img/google-play-badge.svg" alt="Google Play Badge" /></a>
-                <a href="#!"><img className="app-badge" src="assets/img/app-store-badge.svg" alt="App Store Badge" /></a>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-6">
-            <div className="masthead-device-mockup">
-              <div className="device-wrapper">
-                <div className="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
-                  <div className="screen bg-black d-flex justify-content-center align-items-center">
-                    <QRCode value="https://example.com" />
-                  </div>
+const LoginForm = ({ setIsAuthenticated }) => {
+  const [formData, setFormData] = useState({
+    phoneNumber: '',
+    password: ''
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await loginUser(formData);
+      localStorage.setItem('token', response.data.token); // Store token in local storage
+      setIsAuthenticated(true); // Update authentication state
+      Swal.fire('نجاح', 'تم تسجيل الدخول بنجاح', 'success');
+      navigate('/home'); // Redirect to the dashboard or home page after login
+    } catch (error) {
+      Swal.fire('خطأ', error.response?.data || 'حدث خطأ', 'error');
+    }
+  };
+
+  return (
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+        <div className="card mt-5" style={{ direction: 'rtl' }}>
+            <div className="card-body">
+              <div className="header">
+                <div className="header-left">مشوارك</div>
+                <div className="header-right">
+                  <img src={logo} alt="Logo" className="logo" />
                 </div>
               </div>
-              <img src={logo} alt="Logo" className="mt-4 mx-auto d-block" style={{ maxWidth: '50%' }} />
+              <h3 className="card-title text-center">تسجيل الدخول</h3>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="phoneNumber" className="form-label">رقم الهاتف</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">كلمة المرور</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary w-100">تسجيل الدخول</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
-    </header>
-    {/* Add other sections like Features, Call to Action, etc., similarly */}
-  </div>
-);
+    </div>
+  );
+};
 
-export default Intro;
+export default LoginForm;

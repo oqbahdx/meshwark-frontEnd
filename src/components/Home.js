@@ -1,95 +1,72 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, Alert } from 'react-bootstrap';
-import { getCounts , getAllAdmins , getAllRiders} from '../services/apiService';
-import '../styles/Home.css'; // Import the CSS file
-import { Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js';
-import { useNavigate } from 'react-router-dom';
-const Home = () => {
-  const [counts, setCounts] = useState({
-    totalUsers: 0,
-    totalAdmins: 0,
-    totalDrivers: 0,
-    totalTrips: 0,
-  });
-  const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate
-  useEffect(() => {
-    const fetchCounts = async () => {
-      try {
-        const response = await getCounts();
-        setCounts(response.data);
-      } catch (error) {
-        setError('Error fetching counts');
-      }
-    };
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/Home.css';  // Ensure your CSS file is named correctly
+import QRCode from 'react-qr-code';
+import logo from '../images/logo.png';
+import android from '../images/android.png';
+import iphone from '../images/iphone.png';
 
-    fetchCounts();
-  }, []);
+const Home = () => (
+  <div id="page-top" style={{ direction: 'rtl' }}>
+    <header className="masthead py-5" style={{ backgroundColor: '#f8f9fa' }}>
+      <div className="container px-4 px-lg-5">
+        <div className="row gx-4 gx-lg-5 align-items-center justify-content-center">
+          <div className="col-lg-6">
+            <div className="text-center">
+              <img src={logo} alt="Logo" className="img-fluid mb-4" style={{ maxWidth: '150px' }} />
+              <h1 className="display-4 fw-bold mb-3" style={{ color: '#4C6DAA' }}>خدمتك في الوقت المناسب.</h1>
+              <p className="lead text-muted mb-4">توصلك إلى وجهتك بسهولة وراحة، متاحة على مدار الساعة في متناول يدك.</p>
+              <div className="d-flex flex-wrap justify-content-center">
+                <AppDownloadButton 
+                  image={android} 
+                  alt="Android" 
+                  qrValue="https://play.google.com/store" 
+                  storeName="متجر الاندرويد"
+                />
+                <AppDownloadButton 
+                  image={iphone} 
+                  alt="iPhone" 
+                  qrValue="https://www.apple.com/app-store/" 
+                  storeName="متجر الايفون"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section className="features py-5">
+      <div className="container px-4 px-lg-5">
+        <h2 className="text-center mb-5" style={{ color: '#4C6DAA' }}>مميزات التطبيق</h2>
+        <div className="row gx-4 gx-lg-5">
+          <FeatureItem icon="fa-map-marker-alt" title="تتبع المركبة" description="تابع رحلتك في الوقت الحقيقي" />
+          <FeatureItem icon="fa-clock" title="توفير الوقت" description="وصول سريع إلى وجهتك" />
+          <FeatureItem icon="fa-star" title="تقييم السائقين" description="ضمان جودة الخدمة" />
+          <FeatureItem icon="fa-route" title="رحلات متنوعة" description="مشوارك يوصلك الى مكانك و تسافر الى مكان تريده" />
+          <FeatureItem icon="fa-truck" title="نقل الأثاث" description="تبي تنقل عفشك و محتار ؟ ما عليك نوصلك الى باب بيتك" />
+          <FeatureItem icon="fa-car-side" title="خدمة السطحة" description="محتاج سطحة و لا تبي تنقل سياراتك داخل او خارج المدينه ؟ انت في المكان المناسب" />
+        </div>
+      </div>
+    </section>
+  </div>
+);
 
-  const chartData = {
-    labels: ['المستخدمين', 'المشرفين', 'الساقين'],
-    datasets: [{
-      data: [counts.totalUsers, counts.totalAdmins, counts.totalDrivers],
-      backgroundColor: ['#f8d7da', '#d4edda', '#d1ecf1'], // Blue, Green, Red
-      borderColor: ['#f5c6cb', '#c3e6cb', '#bee5eb'],
-      hoverOffset: 4
-    }]
-  };
+const AppDownloadButton = ({ image, alt, qrValue, storeName }) => (
+  <div className="d-flex flex-column align-items-center mx-3 mb-4">
+    <img src={image} alt={alt} className="app-mockup mb-2" style={{ maxWidth: '80px' }} />
+    <QRCode value={qrValue} size={100} />
+    <p className="text-muted mt-2">{storeName}</p>
+  </div>
+);
 
-  return (
-    <Container className="my-4" style={{direction:'rtl'}}>
-      <h1>لوحة التحكم</h1>
-      {error && <Alert variant="danger">{error}</Alert>}
-      <Row>
-        <Col md={3}>
-          <Card className="card-users" onClick={() => navigate('/rider-list')}>
-            <Card.Body>
-              <Card.Title>المستخدمين</Card.Title>
-              <Card.Text>{counts.totalUsers}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card className="card-admins" onClick={() => navigate('/admin-list')}>
-            <Card.Body>
-              <Card.Title>المشرفين</Card.Title>
-              <Card.Text>{counts.totalAdmins}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card className="card-drivers"  onClick={() => navigate('/driver-list')} >
-            <Card.Body>
-              <Card.Title>السايقين</Card.Title>
-              <Card.Text>{counts.totalDrivers}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card className="card-trips">
-            <Card.Body>
-              <Card.Title>الرحلات</Card.Title>
-              <Card.Text>{counts.totalTrips}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Container>
-      <Row className="justify-content-center" style={{ height: '100vh', alignItems: 'center' }}>
-        <Col md={4}>
-          <Card className="mb-4">
-            <Card.Body>
-              <Card.Title>التوزيع</Card.Title>
-              <Pie data={chartData} />
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
-      </Row>
-     
-    </Container>
-  );
-};
+const FeatureItem = ({ icon, title, description }) => (
+  <div className="col-md-4 mb-4 mb-md-0">
+    <div className="text-center">
+      <i className={`fas ${icon} fa-3x mb-3`} style={{ color: '#FFFFFF' }}></i>
+      <h3 className="h4 mb-2" style={{ color: '#FFFFFF' }}>{title}</h3>
+      <p className="text-white-50 mb-0">{description}</p>
+    </div>
+  </div>
+);
 
 export default Home;
