@@ -1,0 +1,65 @@
+// Dashboard specific styles (can reuse some from original app or Bootstrap utilities)
+// The HTML uses Bootstrap classes extensively (card, shadow, text-uppercase, etc.)
+// Customizations can be added here.
+
+.dashboard-container {
+  h1 {
+    font-weight: 300; // Lighter weight for main title
+  }
+}
+
+// Custom styles for cards to match the React app's theme if needed
+.card {
+  border: none; // Remove default border if using custom end borders
+  margin-bottom: 1.5rem; // Default spacing
+}
+
+.border-end-primary { // Bootstrap 5 uses border-start/border-end
+  border-right: .25rem solid #4C6DAA !important; // RTL: border-right
+}
+.border-end-success {
+  border-right: .25rem solid #5cb85c !important;
+}
+.border-end-info {
+  border-right: .25rem solid #5bc0de !important; // Example color for info
+}
+.border-end-warning {
+  border-right: .25rem solid #f0ad4e !important;
+}
+
+.text-gray-300 {
+  color: #dddfeb !important; // Light gray for icons
+}
+.text-gray-800 {
+  color: #5a5c69 !important; // Darker gray for text
+}
+
+.text-xs {
+  font-size: .7rem;
+}
+
+.fw-bold { // Already in Bootstrap 5
+  font-weight: 700 !important;
+}
+
+.shadow { // Already in Bootstrap 5
+  box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;
+}
+
+.no-gutters { // Helper if needed, though Bootstrap 5 grid has alternatives
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// Ensure chart canvas is responsive within its container
+.chart {
+  display: block;
+  width: 100%;
+  height: 100%; // Make sure container has a defined height
+}

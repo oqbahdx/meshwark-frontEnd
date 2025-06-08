@@ -1,0 +1,48 @@
+.privacy-policy-container {
+  font-family: 'Cairo', sans-serif; // Example font
+  line-height: 1.8;
+
+  h1 {
+    font-weight: 300; // Lighter title
+    border-bottom: 2px solid #4C6DAA;
+    padding-bottom: 10px;
+    margin-bottom: 30px !important; // Override Bootstrap default margin if needed
+  }
+
+  .card {
+    border: none; // Remove card border if only using for shadow and padding
+  }
+
+  .card-body {
+    padding: 2rem; // More padding for readability
+  }
+
+  h2.h4 { // Style for section titles
+    color: #333;
+    font-weight: 600;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  p, ul li {
+    color: #555;
+    font-size: 1rem; // Slightly larger for readability
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    padding-right: 20px; // Indentation for RTL lists
+    list-style-type: disc; // Default bullet points
+  }
+
+  strong {
+    color: #333;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

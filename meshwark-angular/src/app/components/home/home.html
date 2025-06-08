@@ -1,0 +1,64 @@
+<!-- Adapted from src/styles/Home.css and the structure of React Home.js -->
+<div class="home-container" style="direction: rtl; text-align: right;">
+  <header class="home-header">
+    <img src="assets/images/logo.png" alt="شعار الشركة" class="home-logo"/>
+    <h1>أهلاً بك في مشوارك</h1>
+    <p>خدمات نقل موثوقة وسريعة عند الطلب.</p>
+  </header>
+
+  <section class="intro-section">
+    <div class="intro-content">
+      <h2>لماذا تختار مشوارك؟</h2>
+      <p>نحن نقدم تجربة نقل فريدة تجمع بين الراحة، الأمان، والأسعار التنافسية. سائقونا محترفون وملتزمون بتقديم أفضل خدمة.</p>
+      <ul>
+        <li><i class="fas fa-shield-alt"></i> رحلات آمنة وموثوقة</li>
+        <li><i class="fas fa-tachometer-alt"></i> وصول سريع لوجهتك</li>
+        <li><i class="fas fa-hand-holding-usd"></i> أسعار تنافسية وشفافة</li>
+        <li><i class="fas fa-mobile-alt"></i> تطبيق سهل الاستخدام</li>
+      </ul>
+    </div>
+    <div class="intro-image">
+      <!-- Placeholder for a relevant image, if any was used -->
+       <img src="assets/images/portrait_black.png" alt="خدمة النقل" class="img-fluid rounded" />
+    </div>
+  </section>
+
+  <section class="app-download-section">
+    <h2>حمل تطبيقنا الآن</h2>
+    <p>استمتع بتجربة أسهل وأسرع مع تطبيق مشوارك على هاتفك المحمول.</p>
+    <div class="app-links">
+      <a href="#" class="app-link">
+        <img src="assets/images/iphone.png" alt="تنزيل من App Store" />
+      </a>
+      <a href="#" class="app-link">
+        <img src="assets/images/android.png" alt="تنزيل من Google Play" />
+      </a>
+    </div>
+  </section>
+
+  <section class="how-it-works-section">
+    <h2>كيف يعمل؟</h2>
+    <div class="steps">
+      <div class="step">
+        <i class="fas fa-map-marker-alt fa-3x"></i>
+        <h4>1. حدد وجهتك</h4>
+        <p>أدخل موقع الانطلاق والوجهة المطلوبة.</p>
+      </div>
+      <div class="step">
+        <i class="fas fa-car fa-3x"></i>
+        <h4>2. اختر نوع السيارة</h4>
+        <p>اختر السيارة التي تناسب احتياجاتك وميزانيتك.</p>
+      </div>
+      <div class="step">
+        <i class="fas fa-hourglass-start fa-3x"></i>
+        <h4>3. انطلق برحلتك</h4>
+        <p>يصلك السائق في دقائق معدودة لتبدأ رحلتك بأمان.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="home-footer">
+    <p>&copy; {{ currentYear }} مشوارك. جميع الحقوق محفوظة.</p>
+    <p><a routerLink="/privacy-policy">سياسة الخصوصية</a></p>
+  </footer>
+</div>

@@ -1,0 +1,11 @@
+// Styles can be similar to other list components
+.all-users-carts-container {
+  h1 {
+    font-weight: 300;
+  }
+}
+.table { th, td { vertical-align: middle; } th { font-weight: 500; } }
+.badge { padding: 0.4em 0.6em; font-size: 0.85em; }
+.btn-sm { padding: 0.25rem 0.5rem; font-size: 0.875rem; i { font-size: 0.9em; } }
+.table-hover tbody tr:hover { background-color: #e9ecef; }
+.card.shadow-sm { box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important; }

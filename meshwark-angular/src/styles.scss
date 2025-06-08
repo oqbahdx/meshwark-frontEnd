@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Import Bootstrap functions and variables (optional, for customization)
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
+
+// Global styles
+body {
+  font-family: 'Cairo', sans-serif; // Example: Using Cairo font for Arabic UI
+  background-color: #f4f7f6; // A light background color for the whole app
+  color: #333;
+  direction: rtl; // Set global RTL direction
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cairo', sans-serif; // Ensure headings also use the selected font
+}
+
+// Link styling (if not entirely handled by Bootstrap)
+a {
+  color: #4C6DAA; // Consistent link color from the app theme
+  text-decoration: none;
+  &:hover {
+    color: darken(#4C6DAA, 10%);
+    text-decoration: underline;
+  }
+}
+
+// Global container adjustments (if needed beyond Bootstrap's default)
+.container, .container-fluid {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+// Helper classes (if any common patterns emerge)
+.text-primary-color {
+  color: #4C6DAA !important;
+}
+
+.bg-primary-color {
+  background-color: #4C6DAA !important;
+  color: white; // Ensure text is readable on primary background
+}
+
+// Card styling consistency (optional global override or enhancement)
+.card {
+  border: 1px solid #e0e0e0; // Softer border for cards
+  // box-shadow: 0 2px 5px rgba(0,0,0,0.05); // Subtle shadow, can be overridden by component specific shadows
+}
+
+// Button styling consistency (ensure primary buttons match theme)
+.btn-primary {
+  background-color: #4C6DAA;
+  border-color: #4C6DAA;
+  &:hover, &:focus, &:active {
+    background-color: darken(#4C6DAA, 10%);
+    border-color: darken(#4C6DAA, 10%);
+  }
+}
+
+// Responsive table containers
+.table-responsive {
+  margin-bottom: 1rem; // Ensure some space below responsive tables
+}
+
+// SweetAlert2 Customizations (optional, if needed globally)
+// .swal2-popup {
+//   font-family: 'Cairo', sans-serif !important;
+// }
+// .swal2-title {
+//   color: #4C6DAA !important;
+// }
+
+// Font Awesome icons - ensure they are sized consistently if needed
+// .fas, .far, .fal, .fab {
+//   vertical-align: middle; // Better alignment in some contexts
+// }
+
+// RTL specific adjustments if not covered by Bootstrap's RTL support
+// For example, margin/padding helpers for RTL if Bootstrap's ms-/me- are not sufficient.
+
+// Ensure Angular Material components (if ever added) also respect RTL
+// @import '@angular/material/prebuilt-themes/indigo-pink.css';
+// html {
+//   direction: rtl;
+// }
+// body {
+//   direction: rtl;
+//   text-align: right;
+// }

@@ -1,0 +1,69 @@
+<div class="container-fluid mt-3 all-users-carts-container" style="direction: rtl;">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0" style="color: #4C6DAA;">بيانات "سلات" جميع المستخدمين (مثال)</h1>
+    <!-- Title suggests this might be for an e-commerce like feature or user activity summary -->
+  </div>
+
+  <div class="alert alert-warning">
+    <strong>ملاحظة:</strong> هذا المكون يعرض بيانات مستخدمين عامة مع بيانات "سلة" أو "نشاط" افتراضية لعدم وجود نقطة نهاية API مخصصة لبيانات السلات في المشروع الأصلي.
+  </div>
+
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+      <span class="visually-hidden">جاري التحميل...</span>
+    </div>
+    <p class="mt-2">جاري تحميل البيانات...</p>
+  </div>
+
+  <div *ngIf="error && !isLoading" class="alert alert-danger shadow-sm">
+    <i class="fas fa-exclamation-triangle me-2"></i> {{ error }}
+  </div>
+
+  <div *ngIf="!isLoading && !error && usersData.length === 0" class="alert alert-info shadow-sm">
+    <i class="fas fa-info-circle me-2"></i> لا يوجد بيانات لعرضها حالياً.
+  </div>
+
+  <div *ngIf="!isLoading && !error && usersData.length > 0" class="card shadow-sm">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover table-striped mb-0">
+          <thead style="background-color: #4C6DAA; color: white;">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">الاسم الكامل</th>
+              <th scope="col">البريد الإلكتروني</th>
+              <th scope="col">نوع المستخدم</th>
+              <th scope="col">عدد العناصر (مثال)</th>
+              <th scope="col">آخر نشاط (مثال)</th>
+              <th scope="col">الحالة</th>
+              <th scope="col">إجراءات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of usersData; let i = index"
+                [style.backgroundColor]="i % 2 === 0 ? '#F8F9FA' : 'white'">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ user.firstName }} {{ user.lastName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ translateUserType(user.userType) }}</td>
+              <td>
+                <span class="badge bg-info">{{ user.cartItemCount }}</span>
+              </td>
+              <td>{{ user.lastActivity }}</td>
+              <td>
+                <span class="badge" [ngClass]="user.isActive ? 'bg-success' : 'bg-danger'">
+                  {{ user.isActive ? 'مفعل' : 'غير مفعل' }}
+                </span>
+              </td>
+              <td>
+                <button (click)="viewUserDetails(user.id)" class="btn btn-sm btn-outline-primary me-2" title="عرض تفاصيل المستخدم">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

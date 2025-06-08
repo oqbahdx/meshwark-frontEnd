@@ -1,0 +1,49 @@
+// DriverList specific styles
+
+.driver-list-container {
+  h1 {
+    font-weight: 300; // Lighter weight for main title
+  }
+}
+
+// Ensure table headers are sticky if table becomes scrollable vertically (more advanced)
+// For now, table-responsive handles horizontal scrolling.
+
+.table {
+  th, td {
+    vertical-align: middle; // Align content vertically in cells
+  }
+  th { // Header cells
+    font-weight: 500; // Slightly bolder than normal but not too much
+  }
+}
+
+.badge { // Ensure good contrast and padding for badges
+  padding: 0.4em 0.6em;
+  font-size: 0.85em;
+}
+
+.btn-sm { // Ensure action buttons are compact
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  i {
+    font-size: 0.9em; // Adjust icon size within buttons if needed
+  }
+}
+
+// Style for alternating row colors is done via [style.backgroundColor] in the template,
+// but can also be done with :nth-child if preferred.
+// tbody tr:nth-child(odd) {
+//   background-color: #F8F9FA;
+// }
+// tbody tr:nth-child(even) {
+//   background-color: white;
+// }
+
+.table-hover tbody tr:hover {
+  background-color: #e9ecef; // Standard hover color
+}
+
+.card.shadow-sm { // Ensure consistent shadow
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}

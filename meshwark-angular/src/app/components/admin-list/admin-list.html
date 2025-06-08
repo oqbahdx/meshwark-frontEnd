@@ -1,0 +1,58 @@
+<div class="container-fluid mt-3 admin-list-container" style="direction: rtl;">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0" style="color: #4C6DAA;">قائمة الإداريين</h1>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+      <span class="visually-hidden">جاري التحميل...</span>
+    </div>
+    <p class="mt-2">جاري تحميل قائمة الإداريين...</p>
+  </div>
+
+  <div *ngIf="error && !isLoading" class="alert alert-danger shadow-sm">
+    <i class="fas fa-exclamation-triangle me-2"></i> {{ error }}
+  </div>
+
+  <div *ngIf="!isLoading && !error && admins.length === 0" class="alert alert-info shadow-sm">
+    <i class="fas fa-info-circle me-2"></i> لا يوجد إداريين لعرضهم حالياً.
+  </div>
+
+  <div *ngIf="!isLoading && !error && admins.length > 0" class="card shadow-sm">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover table-striped mb-0">
+          <thead style="background-color: #4C6DAA; color: white;">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">الاسم الأول</th>
+              <th scope="col">الاسم الأخير</th>
+              <th scope="col">البريد الإلكتروني</th>
+              <th scope="col">الحالة</th>
+              <th scope="col">إجراءات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let admin of admins; let i = index"
+                [style.backgroundColor]="i % 2 === 0 ? '#F8F9FA' : 'white'">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ admin.firstName }}</td>
+              <td>{{ admin.lastName }}</td>
+              <td>{{ admin.email }}</td>
+              <td>
+                <span class="badge" [ngClass]="admin.isActive ? 'bg-success' : 'bg-danger'">
+                  {{ admin.isActive ? 'مفعل' : 'غير مفعل' }}
+                </span>
+              </td>
+              <td>
+                <button (click)="viewAdminDetails(admin.id)" class="btn btn-sm btn-outline-primary me-2" title="عرض التفاصيل">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

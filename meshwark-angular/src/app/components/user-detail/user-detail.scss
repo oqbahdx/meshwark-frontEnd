@@ -1,0 +1,59 @@
+.user-detail-container {
+  h2 {
+    font-weight: 300;
+  }
+}
+
+.table-user-info {
+  th {
+    color: #6c757d; // Bootstrap's text-muted color
+    font-weight: 500;
+  }
+  td {
+    font-weight: 400;
+  }
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid #dee2e6; // Bootstrap's default border color
+}
+
+.qr-code-container {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  display: inline-block; // So it doesn't take full width
+  background-color: #f8f9fa;
+  qr-code canvas { // Ensure canvas is block or similar for centering if needed
+      display: block;
+      margin: 0 auto;
+  }
+}
+
+.card-header {
+  h2 {
+    font-size: 1.5rem; // Adjust header size
+  }
+}
+
+// Soft Badges (similar to some UI themes)
+.bg-success-soft {
+  background-color: rgba(40, 167, 69, 0.1);
+}
+.text-success {
+  color: #28a745 !important;
+}
+
+.bg-danger-soft {
+  background-color: rgba(220, 53, 69, 0.1);
+}
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.badge.fs-6 { // Ensure font size is applied if badge class resets it
+    font-size: 1em !important; // Use 1em to inherit from parent or set specific
+}
